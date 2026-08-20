@@ -6,24 +6,23 @@ clickSound.addEventListener('error', () => {
 let answered = false;
 
 const correct = [
-  "Are you a sole trader of knowledge?",
+  "ASIC approved",
   "That was an easy one.",
   "Lucky guess.",
   "Someone's been studying.",
-  "Competitive advantage unlocked.",
-  "Stakeholder approved."
+  "Competitive advantage.",
+  "ACCC approved.",
+  "Taxable"
 ];
 
 const incorrect = [
   "Someone needs to study.",
   "Misclick?",
   "Putting the mistake in BUSINESS BY MISTAKE",
-  "You are a liability",
-  "Negative cash flow on that one",
-  "Your intelligence is in a contractionary phase",
-  "Thinking deficit",
-  "Involuntary separation from the correct answer",
-  "Demerit good"
+  "Current liability",
+  "Internal influence: information resources",
+  "Final recommendations: get better",
+  "Missing quality control?"
 ];
 
 let current = null;
