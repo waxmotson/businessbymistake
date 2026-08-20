@@ -1,4 +1,8 @@
 const clickSound = new Audio('vine2.mp3');
+clickSound.addEventListener('error', () => {
+  // fallback if vine2.mp3 is not in this repo yet
+  clickSound.src = 'https://raw.githubusercontent.com/waxmotson/econbymistake/main/vine2.mp3';
+});
 let answered = false;
 
 const correct = [
