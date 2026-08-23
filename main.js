@@ -34,7 +34,11 @@ function loadRandom() {
     btn.disabled = false;
   });
 
-  current = answers[Math.floor(Math.random() * answers.length)];
+  // Prefer questions not answered in the last 24 hours (see streak.js)
+  current = (typeof pickQuestion === 'function')
+    ? pickQuestion(answers)
+    : answers[Math.floor(Math.random() * answers.length)];
+
   document.getElementById('title').textContent = current.question;
   document.getElementById('question-img').src = 'static/' + current.question;
   document.getElementById('result').textContent = '';
@@ -55,14 +59,14 @@ function check(choice) {
   document.getElementById('reloader').hidden = false;
 
   if (choice == current.answer) {
-    recordAnswer(true);
+    recordAnswer(true, current.question);
     document.getElementById('result').textContent =
       'CORRECT ANSWER: ' + current.answer;
     document.getElementById('message').textContent =
       correct[Math.floor(Math.random() * correct.length)];
     document.getElementById('result').style.color = 'lawngreen';
   } else {
-    recordAnswer(false);
+    recordAnswer(false, current.question);
     document.getElementById('result').textContent =
       'Incorrect, it was: ' + current.answer;
     document.getElementById('message').textContent =
