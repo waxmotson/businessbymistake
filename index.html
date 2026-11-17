@@ -15,7 +15,7 @@
   <style>
     @font-face { font-family: 'Tomkins Display'; src: url('TomkinsDisplay-Regular.woff2') format('woff2'); font-display: swap; }
     h1, h2, h3 { font-family: 'Tomkins Display', 'Bricolage Grotesque', sans-serif; font-weight: normal; }
-    </style>
+  </style>
   <style>
     body {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -31,9 +31,7 @@
       word-break: break-all;
       color: aqua;
     }
-    h2 {
-      font-size: 2rem;
-    }
+    h2 { font-size: 2rem; }
     h3 {
       font-style: italic;
       color: burlywood;
@@ -60,12 +58,68 @@
       margin-top: 24px;
       font-weight: bold;
     }
-      h1, h2, h3 { font-family: 'Tomkins Display', 'Bricolage Grotesque', sans-serif; font-weight: normal; }
+    .topic-picker {
+      margin: 18px 0 12px;
+    }
+    .topic-picker-label {
+      margin: 0 0 10px;
+      color: burlywood;
+      font-size: 1.05rem;
+    }
+    .topic-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+    }
+    .topic-button {
+      border: 2px solid aqua;
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 9px 14px;
+      transition: background-color 120ms ease, color 120ms ease;
+    }
+    .topic-button:hover { border-color: burlywood; }
+    .topic-button.selected {
+      background: aqua;
+      color: rgb(29, 32, 31);
+    }
+    .topic-button:focus-visible {
+      outline: 3px solid burlywood;
+      outline-offset: 3px;
+    }
+    #topic-status {
+      color: burlywood;
+      font-size: 0.95rem;
+      margin: 9px 0 0;
+    }
+    @media (max-width: 520px) {
+      .topic-button {
+        flex: 1 1 42%;
+        font-size: 0.95rem;
+        padding: 9px 8px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="flex-container">
     <h2>BUSINESS BY MISTAKE</h2>
+    <div class="topic-picker">
+      <p class="topic-picker-label">SELECT A HSC BUSINESS STUDIES TOPIC</p>
+      <div class="topic-buttons" role="group" aria-label="Choose a Business Studies topic">
+        <button class="topic-button" type="button" data-topic="operations" onclick="selectTopic('operations')" aria-pressed="false">Operations</button>
+        <button class="topic-button" type="button" data-topic="marketing" onclick="selectTopic('marketing')" aria-pressed="false">Marketing</button>
+        <button class="topic-button" type="button" data-topic="finance" onclick="selectTopic('finance')" aria-pressed="false">Finance</button>
+        <button class="topic-button" type="button" data-topic="human-resources" onclick="selectTopic('human-resources')" aria-pressed="false">Human Resources</button>
+        <button class="topic-button" type="button" data-topic="all" onclick="selectTopic('all')" aria-pressed="false">All Topics</button>
+      </div>
+      <p id="topic-status" aria-live="polite"></p>
+    </div>
     <h1 id="title"></h1>
   </div>
 
@@ -84,6 +138,7 @@
   <button id="reloader" hidden="true" onclick="window.location.reload();">NEXT</button>
   <script src="streak.js"></script>
   <script src="answers.js"></script>
+  <script src="topics.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
